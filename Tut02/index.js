@@ -5,13 +5,26 @@ const fsPromises = require("fs").promises;
 
 const fileOps =  async () => {
     try{
+
+        //read from a file
         const data = await fsPromises.readFile(path.join(__dirname, "files" , "starter.txt"),"utf8");
         console.log(data);
 
+        
+        //delete the file
+        await fsPromises.unlink(path.join(__dirname, "files" , "starter.txt"));
+
+
+        //write to a new file
         await fsPromises.writeFile(path.join(__dirname, "files" , "promiseWrite.txt"), data);
+
+        //append to that new file
         await fsPromises.appendFile(path.join(__dirname,  "files",  "promiseWrite.txt"), "\n\n Nice to meet  you promise",);
+        
+        //rename the file
         await fsPromises.rename(path.join(__dirname, "files" , "promiseWrite.txt"), path.join(__dirname,  "files" , "promiseNewWrite.txt"));
 
+        //read from the new renamed file
         const newData = await fsPromises.readFile(path.join(__dirname, "files" , "promiseNewWrite.txt"),"utf8");
         console.log(newData);
 
