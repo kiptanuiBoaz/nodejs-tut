@@ -1,0 +1,2 @@
+2023-01-21 	 23:10:11 	 6371b3e0-4428-4fed-97a0-44396ea00878 	 Log event emitted 
+2023-01-21 	 23:10:24 	 75eb0bcc-30fc-45af-8012-b05d31618cca 	 Log event emitted 
