@@ -1,0 +1,5 @@
+20230122	18:56:30	61c20fad-336f-41bb-8c3f-0a5b970e9c77	GET	undefined	/new-page.html
+20230122	18:56:30	1241563a-3a40-436c-9330-5b0ad90148d7	GET	undefined	/css/style.css
+20230122	18:56:30	2f6a904e-11ec-42c9-845f-fdb628d1cd61	GET	undefined	/img/img1.jpg
+20230122	18:57:30	e8c0cd80-dace-494d-86d1-f4c9acada75f	GET	undefined	/index.html
+20230122	18:57:30	781f4e63-0548-4d75-8e55-c004c208c9a9	GET	undefined	/css/style.css
