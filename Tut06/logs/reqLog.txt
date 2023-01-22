@@ -3,3 +3,14 @@
 20230122	18:56:30	2f6a904e-11ec-42c9-845f-fdb628d1cd61	GET	undefined	/img/img1.jpg
 20230122	18:57:30	e8c0cd80-dace-494d-86d1-f4c9acada75f	GET	undefined	/index.html
 20230122	18:57:30	781f4e63-0548-4d75-8e55-c004c208c9a9	GET	undefined	/css/style.css
+20230122	23:00:40	04bc2605-966e-4c9a-a84a-3bec057b6bfe	GET	undefined	/index.html
+20230122	23:00:40	ec56b5b4-2b6d-4700-87c0-63eddb79da1f	GET	undefined	/css/style.css
+20230122	23:00:45	55338077-5977-4ad8-ac72-b1992ca51abb	GET	undefined	/index.html
+20230122	23:00:45	de1a6d5a-fcbd-4fe7-acd8-f63f6d57ab53	GET	undefined	/css/style.css
+20230122	23:00:51	1a41a161-ff5d-4ebd-b0e5-c1450c9f04f9	GET	undefined	/index.html
+20230122	23:00:51	e4baec0b-7740-4606-84d5-13addfed220f	GET	undefined	/css/style.css
+20230122	23:02:30	c4a06cd5-f460-470d-9eeb-71e62ce942c8	GET	undefined	/old-page.html
+20230122	23:02:30	d9c7652a-46af-4261-be52-9e37037c5892	GET	undefined	/new-page.html
+20230122	23:02:30	62c5c942-7104-400a-b73a-50ed0412f0d8	GET	undefined	/css/style.css
+20230122	23:02:30	93ff05a1-6997-4332-a845-3db8d76224eb	GET	undefined	/img/img1.jpg
+20230122	23:19:32	69bd3216-2390-4776-9f31-c8f591cd4952	GET	undefined	/new-page.html
