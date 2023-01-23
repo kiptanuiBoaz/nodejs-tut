@@ -4,32 +4,19 @@ const path = require('path');
 const cors = require("cors")
 const {logger} = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
-const { restart } = require('nodemon');
+const corsOptions = require("./config/corsOptions")
 const PORT = process.env.PORT || 3500;
+
 
 
 //custom middlewareLogger
 app.use(logger);
 
-//cross origin resource sharing
+
 //domains allowed to ping the server
-const whiteList = ["http://www.mysite.com", "http://www.localhost:3500", "http:127.0.0.1:500"]
-const corsOptions = {
-    origin: (origin, callback) =>{
-        //check if origin is in the whitelist
-        if(whiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        }else{
-            callback(new Error("Not allowed by cors"));
-        }
-    },
-
-    optionSuccessStatus: 200
-
-}
 app.use(cors(corsOptions));
 
-// middleware function provided by the Express.js framework that is used to parse incoming request bodies that have the Content-Type of application/x-www-form-urlencoded.
+// middleware function provided by the Express.js to handle formdata
 app.use(express.urlencoded({extended: false}))
 
 //built in middleware for json data
@@ -43,12 +30,9 @@ app.use("/subdir", express.static(path.join(__dirname,'/public')));
 //root router
 app.use("/",require("./routes/root.js"));
 
-//proivsion for external routers
-app.use("/subdir", require("./routes/subdir"))
 
 //API route
 app.use("/employees", require("./routes/api/employees.js"));
-
 
 
 //applies to all http methods that  made it this far without bieng served
