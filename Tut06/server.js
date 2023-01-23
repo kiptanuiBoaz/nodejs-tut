@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require("cors")
-const {logger,logEvents} = require("./middleware/logEvents")
+const {logger} = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
+const { restart } = require('nodemon');
 const PORT = process.env.PORT || 3500;
 
 
@@ -10,10 +12,12 @@ const PORT = process.env.PORT || 3500;
 app.use(logger);
 
 //cross origin resource sharing
-const whiteList = ["http://www.google.com", "http://www.localhost:3500", "http:127.0.0.1:500"]
+//domains allowed to ping the server
+const whiteList = ["http://www.mysite.com", "http://www.localhost:3500", "http:127.0.0.1:500"]
 const corsOptions = {
     origin: (origin, callback) =>{
-        if(whiteList.indexOf(origin) !== -1) {
+        //check if origin is in the whitelist
+        if(whiteList.indexOf(origin) !== -1 || !origin) {
             callback(null, true)
         }else{
             callback(new Error("Not allowed by cors"));
@@ -53,8 +57,26 @@ app.get("/old-page(.html)?", (req,res)=>{
 
 })
 
-app.get("/*", (req, res)=>{
-    res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+//applies to all http methods that  made it this far without bieng served
+app.all("*", (req, res)=>{
+    res.status(404);
+
+    if(req.accepts("html")){
+        //send html if the client headers accepts .html
+        res.sendFile(path.join(__dirname, "views", "404.html"));
+    }else if(req.accepts("json")){
+        //send json if the client headers accepts json
+        res.json({error: "404 Not Found"})
+    }else{
+          //send text if the client headers accepts text
+        res.type(txt).send("404 Not Found")
+    }
+  
 })
+
+
+//provisions for any uncaught errors
+// custom middleware to catch, log and  save errors
+app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
