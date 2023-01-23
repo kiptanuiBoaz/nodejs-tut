@@ -36,26 +36,20 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 //middleware function provided by the Express.js framework that is used to serve static files from a specific folder
-app.use(express.static(path.join(__dirname,'/public')));
+app.use("/",express.static(path.join(__dirname,'/public')));
+//pass static files from the subdir
+app.use("/subdir", express.static(path.join(__dirname,'/public')));
+
+//root router
+app.use("/",require("./routes/root.js"));
+
+//proivsion for external routers
+app.use("/subdir", require("./routes/subdir"))
+
+//API route
+app.use("/employees", require("./routes/api/employees.js"));
 
 
-
-app.get("^/$|/index(.html)?", (req,res)=>{
-    // res.sendFile("./views/index.html" , {root: __dirname});
-    res.sendFile(path.join(__dirname, "views", "index.html"));
-
-})
-
-
-app.get("/new-page.html", (req,res)=>{
-    res.sendFile(path.join(__dirname, "views", "new-page.html"));
-
-})
-
-app.get("/old-page(.html)?", (req,res)=>{
-    res.redirect(301, "/new-page.html");
-
-})
 
 //applies to all http methods that  made it this far without bieng served
 app.all("*", (req, res)=>{
