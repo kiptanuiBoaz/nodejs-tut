@@ -27,11 +27,10 @@ app.use("/",express.static(path.join(__dirname,'/public')));
 //pass static files from the subdir
 app.use("/subdir", express.static(path.join(__dirname,'/public')));
 
-//root router
+//routes
 app.use("/",require("./routes/root.js"));
-
-
-//API route
+app.use("/register",require("./routes/register.js"));
+app.use("/auth",require("./routes/auth.js"));
 app.use("/employees", require("./routes/api/employees.js"));
 
 

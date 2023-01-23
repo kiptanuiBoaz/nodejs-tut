@@ -8,7 +8,7 @@ const data = {
 
 
 const getEmployees = (req,res)=>{
-    res.status(200).json(data.employees)
+    return res.status(200).json(data.employees)
 
 }
 
@@ -20,14 +20,14 @@ const createNewEmployee = (req,res)=>{
     }
 
     if(!newEmployee.firstname || !newEmployee.lastname){
-        res.status(404).json({"message": "first_name and last_name are required"});
+        return res.status(404).json({"message": "first_name and last_name are required"});
     }
 
     //update the data object
     data.setEmployees([...data.employees, newEmployee]);
     
     //succes response
-    res.status(201).json(data.employees);
+    return res.status(201).json(data.employees);
 }
 
 const updateEmployee = (req,res)=>{
@@ -37,7 +37,7 @@ const updateEmployee = (req,res)=>{
     const employee = data.employees.find(emp => emp.id === parseInt(id))
 
     //send a bad request if the employee with the id  doen't exist
-    if(!employee) res.status(400).json({"message":`Employee ID ${id} does not exist`});
+    if(!employee) return res.status(400).json({"message":`Employee ID ${id} does not exist`});
 
     //hydrate the employee variable with recieved data
     if(firstname)  employee.firstname = firstname;
@@ -51,7 +51,7 @@ const updateEmployee = (req,res)=>{
     data.setEmployees(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
     
     //send a success response
-    res.status(200).json(data.employees);
+    return res.status(200).json(data.employees);
 }
 
 const deleteEmployee = (req,res)=>{
@@ -70,7 +70,7 @@ const deleteEmployee = (req,res)=>{
     data.setEmployees([...filteredArray]);
 
     //success message
-    res.status(200).json(data.employees);
+    return res.status(200).json(data.employees);
 }
 
 const  getEmployee = (req, res)=>{
@@ -79,7 +79,7 @@ const  getEmployee = (req, res)=>{
     if (!employee) {
         return res.status(400).json({ "message": `Employee ID ${req.params.id} not found` });
     }
-    res.json(employee);
+    return res.json(employee);
 }
 
 //export the fns
