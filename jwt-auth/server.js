@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const cors = require("cors")
 const {logger} = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
-const corsOptions = require("./config/corsOptions")
+const corsOptions = require("./config/corsOptions");
+const verifyJWT = require("./middleware/verifyJWT");
 const PORT = process.env.PORT || 3500;
 
 
@@ -22,15 +24,23 @@ app.use(express.urlencoded({extended: false}))
 //built in middleware for json data
 app.use(express.json());
 
+//middlware for cookies
+app.use(cookieParser());
+
 //middleware function provided by the Express.js framework that is used to serve static files from a specific folder
 app.use("/",express.static(path.join(__dirname,'/public')));
 //pass static files from the subdir
 app.use("/subdir", express.static(path.join(__dirname,'/public')));
 
+
 //routes
 app.use("/",require("./routes/root.js"));
 app.use("/register",require("./routes/register.js"));
 app.use("/auth",require("./routes/auth.js"));
+app.use("/refresh",require("./routes/refresh.js"));
+
+//protect employees route with jwt
+app.use(verifyJWT);
 app.use("/employees", require("./routes/api/employees.js"));
 
 
