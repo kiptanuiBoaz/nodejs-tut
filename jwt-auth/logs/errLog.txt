@@ -1,0 +1,16 @@
+20230123	04:00:22	628b608e-d02b-48d8-b90a-835b0394dfdc	Error:	Not allowed by cors
+20230123	04:00:22	23886336-b1fe-419e-8620-becbc3b401fa	Error:	Not allowed by cors
+20230123	04:16:38	db0ee1ab-4dc2-4424-9918-6658080d8486	Error:	Cannot set headers after they are sent to the client
+20230123	04:17:08	be0f5614-238f-4309-ba95-4c514b8594ae	Error:	Cannot set headers after they are sent to the client
+20230123	04:47:15	f15c9273-1c1a-4433-89ec-540bdbfcf9c1	Error:	ENOENT: no such file or directory, stat 'C:\Users\ADMIN\Desktop\WEB DEV\nodejs\Tut06\views\subdir\test.html'
+20230123	18:32:49	141c7b27-782f-42b4-8f34-9025ef913f44	Error:	Cannot set headers after they are sent to the client
+20230123	18:46:41	3c144278-cd63-4b8c-b58e-41679806f785	TypeError:	Cannot set properties of undefined (setting 'firstname')
+20230123	18:47:00	8e06cd88-e814-4252-8d6c-b78122445693	TypeError:	Cannot set properties of undefined (setting 'firstname')
+20230124	17:03:39	4595a516-28f1-4c4b-833e-6af54ed550b5	ReferenceError:	jwt is not defined
+20230124	17:03:58	25e0db4f-8425-4ef4-9f82-3c701c360f45	ReferenceError:	jwt is not defined
+20230124	17:04:01	3e8a1a52-e24a-4bff-8dab-038b06492456	ReferenceError:	jwt is not defined
+20230124	17:04:05	c687059e-bdaf-431d-ac61-303d654e3a17	ReferenceError:	jwt is not defined
+20230124	17:06:57	e016a0aa-8b7b-4a93-8325-7f1749780e63	TypeError:	Cannot read properties of undefined (reading 'verify')
+20230124	17:07:04	f661fd48-1925-422c-b5ff-e49c158b4a13	TypeError:	Cannot read properties of undefined (reading 'verify')
+20230124	17:10:27	5e91666f-4cb9-4747-af77-7f356859921c	TypeError:	Cannot read properties of undefined (reading 'verify')
+20230124	17:13:45	25aa1572-1711-42dc-9ce0-b3e3e7a52685	TypeError:	Cannot read properties of undefined (reading 'verify')
