@@ -206,3 +206,15 @@
 20230125	08:45:58	6088a7b5-197c-403b-98b1-ef5efd381e2c	POST	undefined	/employees
 20230125	08:48:08	cfd80713-be36-4f66-93ac-dd9bb479eb68	POST	undefined	/auth
 20230125	08:49:45	c815f6ff-ddd2-4dca-9509-e01bbd400d13	POST	undefined	/employees
+20230125	19:11:34	41ac86c8-2f57-407c-a34a-0b4d2604ac3d	POST	undefined	/register
+20230125	19:12:03	f0365734-8c84-42b8-b753-abe49ce8ec4c	POST	undefined	/register
+20230125	19:12:14	a2929966-b15d-4468-a8df-b7caa69611f8	POST	undefined	/register
+20230125	19:12:27	7335c4b9-a215-4d3c-a602-05b094f1b920	POST	undefined	/register
+20230125	19:12:38	9b2a95ba-767d-4931-ab88-161fcd33806d	POST	undefined	/register
+20230125	19:12:48	789c6eac-00b7-4efc-8c2a-5b4a93b29efb	POST	undefined	/register
+20230125	19:19:11	a49b6c5a-ec2e-45d4-90f5-182b867fb0e8	POST	undefined	/auth
+20230125	19:19:20	5c8f5989-e7f1-493e-aa6f-b3163568ee3b	POST	undefined	/auth
+20230125	19:19:27	a4e0b13f-18d6-4af1-980b-ee026247d3d9	POST	undefined	/auth
+20230125	19:19:32	ea523330-28fd-47df-aef1-6af24751ef20	POST	undefined	/auth
+20230125	19:19:40	211208b3-f442-4990-92f8-fecb0ca142c1	POST	undefined	/auth
+20230125	19:19:58	145407f0-4164-4d75-b1d2-e7477fb27f33	POST	undefined	/auth

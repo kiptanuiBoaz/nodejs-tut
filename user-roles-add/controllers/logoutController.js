@@ -19,14 +19,15 @@ const handleLogout= async (req,res) => {
     const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
     //erase cookie if user is not found
     if(!foundUser){
+        //clear coockie
         res.clearCookie("jwt",  {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000});
-        return res.status(204).json({"message":"Delted but not in db!"});
+        return res.status(204).json({"message":"Deleted but not in db!"});
     }
 
-    //delete the refresh token in the db
+    //delete the user in the db
     const otherUsers = usersDB.users.filter(person => person.refreshToken !== refreshToken);
 
-    //set refreshtoken field to empty
+    //set refreshtoken field in current  user  to empty
     const currentUser = {...foundUser, refreshToken:""};
 
     //push to db

@@ -7,7 +7,7 @@ const credentials = (req,res,next) => {
 
     //set control allow  origin to true for cors to allow resource sharing
     if(whiteList.includes(origin)){
-        res.header("Access-Control-Allow-Origin", true)
+        return res.header("Access-Control-Allow-Origin", true)
     }
     
     next();

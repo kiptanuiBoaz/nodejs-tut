@@ -12,6 +12,7 @@ const handleRefreshToken = async (req,res) => {
     //check for cookies and jwt property
     if(!cookies?.jwt) return res.status(401).json({"message":"cookie not found"});
 
+    //access refresh token
     const refreshToken = cookies.jwt;
 
     //query the presensce of user with refresh token in db
@@ -24,8 +25,10 @@ const handleRefreshToken = async (req,res) => {
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err,decoded) => {
+            //id recieved name is !== name in DB
             if(err || decoded.username !== foundUser.username) return res.status(403).json({"message":`${err.message}`});
 
+            //roles of user from DB
             const roles = Object.values(foundUser.roles)
             //generate a new access token
             const accessToken = jwt.sign(
