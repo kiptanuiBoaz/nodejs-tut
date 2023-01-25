@@ -3,7 +3,6 @@ const usersDB = {
     setUsers: function(data){this.users = data}
 };
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const fsPromises = require("fs").promises;
 const path = require("path");
 
