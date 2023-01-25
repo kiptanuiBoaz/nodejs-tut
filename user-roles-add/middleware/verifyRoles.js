@@ -4,7 +4,9 @@ const verifyRoles = (...allowedRoles) =>{
         //unAuthorized
         if(!req?.roles) return res.status(401).json({"message":"Unauthorized"});
 
+        //passed along with verifyRoles middlesware
         const rolesArray = [...allowedRoles];
+        
         console.log(rolesArray);
         console.log(req.roles);
         //compare role from jwt verify with allowed roles (predefined)
