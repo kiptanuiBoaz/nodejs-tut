@@ -11,7 +11,7 @@ const verifyRoles = (...allowedRoles) =>{
         const result = req.roles.map(role => rolesArray.includes(role)).find(val => val === true);
 
         //check if there is atleat one role
-        if(!result) res.status(401).json({"message":"Unauthorized"});
+        if(!result) return res.status(401).json({"message":"Unauthorized"});
         next();
     }
 } 
