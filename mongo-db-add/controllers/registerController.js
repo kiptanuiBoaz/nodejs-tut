@@ -1,11 +1,5 @@
-const fsPromises = require("fs").promises;
-const path = require("path");
 const bcrypt = require("bcrypt");
-
-const usersDB = {
-    users: require("../model/users.json"),
-    setUsers: function(data){this.users = data}
-};
+const User = require("../model/Users");// user schema
 
 const handleNewUser = async (req,res) =>{
     //destructure body params
@@ -15,7 +9,7 @@ const handleNewUser = async (req,res) =>{
     if(!pwd || !user) res.status(400).json({"message":"Username and password are required"});
 
     //check for duplicate usernames in db
-    const duplicate = usersDB.users.find(person => person.username === user);
+    const duplicate = await User.findOne({username: user}).exec(); //exec is necessary bcoz its a mongoose method used with await without a callback
 
     //send a conflict mesage if duplicate
     if(duplicate) return res.status(409).json({"message": "username already in use"});
@@ -23,21 +17,14 @@ const handleNewUser = async (req,res) =>{
     try{
         //hash password
         const hashedPWD = await bcrypt.hash(pwd,10);
-        //store new user
-        const newUser = {
+         //create and store (this also calls .save()) new user
+        const newUser = await User.create({
             "username":user,
-            "roles":{"User": 2001},
             "password":hashedPWD
-        };
+        });
 
-        usersDB.setUsers([...usersDB.users, newUser]);
-
-        //simulate database simulation
-        await fsPromises.writeFile(
-            path.join(__dirname, "..", "model", "users.json"),
-            JSON.stringify(usersDB.users)
-        )
-        console.log(usersDB.users)
+        console.log(newUser);
+         
 
         return res.status(201).json({"message":`New user ${user} created succesfully`})
 
