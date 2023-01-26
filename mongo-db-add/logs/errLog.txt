@@ -18,3 +18,9 @@
 20230124	17:26:02	09d85ab3-5e91-4737-abd2-d801c147038c	TypeError:	Cannot read properties of undefined (reading 'Verify')
 20230125	08:38:39	14c554a1-c9d3-4195-afa0-5c2689aa6616	Error:	Cannot set headers after they are sent to the client
 20230125	08:38:52	1b801f5b-5201-43d5-ae2c-3bc2818429b2	Error:	Cannot set headers after they are sent to the client
+20230126	12:25:53	79cd3e99-9aab-4aee-9465-c923b7133096	SyntaxError:	Unexpected token d in JSON at position 8
+20230126	12:26:16	214aa15f-d073-43b7-bd31-61adda29e163	SyntaxError:	Unexpected token d in JSON at position 8
+20230126	12:26:49	decb91f4-f955-45d3-9489-8749be3039a1	SyntaxError:	Unexpected token d in JSON at position 8
+20230126	12:27:40	0dcd9e29-cc29-4602-99a4-16d4ed10d583	SyntaxError:	Unexpected token d in JSON at position 8
+20230126	15:21:47	5c3ad806-f402-44e2-9dc1-15cafb97c0e0	SyntaxError:	Unexpected token : in JSON at position 34
+20230126	15:21:53	fb792833-b56b-4279-bb7d-4f8d1acdcfde	SyntaxError:	Unexpected token : in JSON at position 33

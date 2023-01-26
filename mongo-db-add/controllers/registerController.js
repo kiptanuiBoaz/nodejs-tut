@@ -17,16 +17,14 @@ const handleNewUser = async (req,res) =>{
     try{
         //hash password
         const hashedPWD = await bcrypt.hash(pwd,10);
-         //create and store (this also calls .save()) new user
+
+        //create and store (this also calls .save()) new user
         const newUser = await User.create({
             "username":user,
             "password":hashedPWD
-        });
+        });      
 
-        console.log(newUser);
-         
-
-        return res.status(201).json({"message":`New user ${user} created succesfully`})
+        return res.status(201).json({"message":`New user ${newUser.username} created succesfully`})
 
     }catch(err){
         console.error(err);

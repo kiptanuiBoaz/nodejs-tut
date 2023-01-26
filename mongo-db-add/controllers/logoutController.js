@@ -1,9 +1,4 @@
-const usersDB = {
-    users: require("../model/users.json"),
-    setUsers: function(data){this.users = data}
-};
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require("../model/Users");// user schema
 
 const handleLogout= async (req,res) => {
     //on client side alsa delete the access token
@@ -11,12 +6,12 @@ const handleLogout= async (req,res) => {
     const cookies = req.cookies;
 
     //check for cookies and jwt property
-    if(!cookies?.jwt) res.sendStatus(204).json({"message":"The cookie not found"});
+    if(!cookies?.jwt) return res.status(204).json({"message":"The cookie not found"});
 
     const refreshToken= cookies.jwt;
 
     //try to find refresh token in db
-    const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
+    const foundUser =  await User.findOne({refreshToken}).exec(); //keys and values are the same
     //erase cookie if user is not found
     if(!foundUser){
         //clear coockie
@@ -25,20 +20,16 @@ const handleLogout= async (req,res) => {
     }
 
     //delete the user in the db
-    const otherUsers = usersDB.users.filter(person => person.refreshToken !== refreshToken);
+    foundUser.refreshToken = "";
 
-    //set refreshtoken field in current  user  to empty
-    const currentUser = {...foundUser, refreshToken:""};
+    //save the changes to db
+    const result = await foundUser.save();
 
-    //push to db
-    usersDB.setUsers([...otherUsers, currentUser]);
-    await fsPromises.writeFile(
-        path.join( __dirname, "..", "model", "users.json"),
-        JSON.stringify(usersDB.users)
-    )
+    console.log(result);
     //clear coockie
     res.clearCookie("jwt",  {httpOnly:true, sameSite:"None", secure: true}); //secure:true only serves https
     return res.status(204).json({"message":"Logged out successfully"});  
+    
    
 }
 

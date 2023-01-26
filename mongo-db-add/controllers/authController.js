@@ -1,11 +1,5 @@
-const usersDB = {
-    users: require("../model/users.json"),
-    setUsers: function(data){this.users = data}
-};
+const User = require("../model/Users");// user schema
 const jwt = require("jsonwebtoken");
-const fsPromises = require("fs").promises;
-const path = require("path");
-
 const bcrypt = require("bcrypt");
 
 const handleLogin = async (req,res) => {
@@ -16,7 +10,7 @@ const handleLogin = async (req,res) => {
     if(!pwd || !user) res.status(400).json({"message":"Username and password are required"});
 
     //query the presensce of user
-    const foundUser = usersDB.users.find(person => person.username === user);
+    const foundUser = await User.findOne({username: user}).exec(); //exec is necessary bcoz its a mongoose method used with await without a callback
     //exit if user is not found
     if(!foundUser) return res.status(401).json({"message":"user unauthorised!"});
 
@@ -44,20 +38,13 @@ const handleLogin = async (req,res) => {
             {expiresIn: "1d"}
         )
         
-        //saving refresh token with current user
-        const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
-        //add refresh token to user object in db
-        const currentUser = {...foundUser, refreshToken}
-        //finally add the tokened user with filtered users to db
-        usersDB.setUsers([...otherUsers, currentUser]);
-
-        await fsPromises.writeFile(
-            path.join(__dirname, "..", "model", "users.json"),
-            JSON.stringify(usersDB.users)
-        );
+        //saving refresh token with found user
+        foundUser.refreshToken = refreshToken;
+        const result = await foundUser.save();
+        console.log(result);
         
         return  res
-            .cookie("jwt", refreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000})
+            .cookie("jwt", refreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
             .status(200)
             .json({"message":`User ${user} is logged in!`, accessToken})
         ;
