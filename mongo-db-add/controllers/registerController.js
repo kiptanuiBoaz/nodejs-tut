@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../model/Users");// user schema
 
+
 const handleNewUser = async (req,res) =>{
     //destructure body params
     const {user, pwd} = req.body;

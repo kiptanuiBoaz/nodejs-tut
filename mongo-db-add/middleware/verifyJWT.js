@@ -1,8 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-
-const fsPromises = require("fs").promises;
-
 const verifyJWT = (req,res,next) =>  {
     //access token from the req headers
     const authHeader =  req.headers.authorization || req.headers.Authorization;
@@ -23,6 +20,7 @@ const verifyJWT = (req,res,next) =>  {
             //seting the username (of req obj) to decoded usrname from jwt
             req.user = decoded.UserInfo.username;
             req.roles = decoded.UserInfo.roles;
+            //pass on control to the next controller || middleware
             next();
         }
     )

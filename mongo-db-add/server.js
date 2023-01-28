@@ -47,10 +47,10 @@ app.use("/auth",require("./routes/auth.js"));
 app.use("/refresh",require("./routes/refresh.js"));
 app.use("/logout",require("./routes/logout.js"));
 
-//protect employees route with jwt
+//protected routes
 app.use(verifyJWT);
 app.use("/employees", require("./routes/api/employees.js"));
-
+app.use("/users", require("./routes/api/users.js"));
 
 //applies to all http methods that  made it this far without bieng served
 app.all("*", (req, res)=>{
