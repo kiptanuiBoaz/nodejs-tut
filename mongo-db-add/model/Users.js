@@ -19,7 +19,7 @@ const userSchema = new Schema ({
         required: true,
 
     },
-    refreshToken: String,//not required
+    refreshToken: [String],//not required
 })
 
 module.exports = mongoose.model("User", userSchema);

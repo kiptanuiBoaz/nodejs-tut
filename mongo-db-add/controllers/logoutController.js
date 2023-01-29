@@ -20,7 +20,7 @@ const handleLogout= async (req,res) => {
     }
 
     //delete the user in the db
-    foundUser.refreshToken = "";
+    foundUser.refreshToken = foundUser.refreshToken.filter(rt => rt !== refreshToken);
 
     //save the changes to db
     const result = await foundUser.save();

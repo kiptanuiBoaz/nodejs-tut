@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const handleLogin = async (req,res) => {
+    const cookies = req.cookies;
+    console.log(`cookie availabela at login ${JSON.stringify(cookies)}`)
     //destructure body params
     const {user, pwd} = req.body;
 
@@ -32,19 +34,47 @@ const handleLogin = async (req,res) => {
         )
 
         //create Refresh token
-        const refreshToken = jwt.sign(
+        const newRefreshToken = jwt.sign(
             {"username": foundUser.username},
             process.env.REFRESH_TOKEN_SECRET,
             {expiresIn: "1d"}
         )
+
+        let newRefreshTokenArray = 
+            !cookies?.jwt 
+                ? foundUser.refreshToken
+                : foundUser.refreshToken.filter( rt => rt !== cookies.jwt
+            )
+        ;
+
+        if (cookies?.jwt) {
+
+            /* 
+            Scenario  
+                1) User logs in but never uses RT and does not logout 
+                2) RT is stolen
+                3) If 1 & 2, reuse detection is needed to clear all RTs when user logs in
+            */
+            const refreshToken = cookies.jwt;
+            const foundToken = await User.findOne({ refreshToken }).exec();
+
+            // Detected refresh token reuse!
+            if (!foundToken) {
+                console.log('attempted refresh token reuse at login!')
+                // clear out ALL previous refresh tokens
+                newRefreshTokenArray = [];
+            }
+
+            res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+        }
         
         //saving refresh token with found user
-        foundUser.refreshToken = refreshToken;
+        foundUser.refreshToken = [...newRefreshTokenArray,...newRefreshToken];
         const result = await foundUser.save();
         console.log(result);
         
         return  res
-            .cookie("jwt", refreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
+            .cookie("jwt", newRefreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
             .status(200)
             .json({"message":`User ${user} is logged in!`, accessToken})
         ;
