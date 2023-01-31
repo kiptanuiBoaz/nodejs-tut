@@ -24,3 +24,22 @@
 20230126	12:27:40	0dcd9e29-cc29-4602-99a4-16d4ed10d583	SyntaxError:	Unexpected token d in JSON at position 8
 20230126	15:21:47	5c3ad806-f402-44e2-9dc1-15cafb97c0e0	SyntaxError:	Unexpected token : in JSON at position 34
 20230126	15:21:53	fb792833-b56b-4279-bb7d-4f8d1acdcfde	SyntaxError:	Unexpected token : in JSON at position 33
+20230131	13:46:02	c261076b-8b0b-4cb2-bce3-af575a832ef2	Error:	Not allowed by cors
+20230131	13:53:11	bcb99d1b-fe43-479f-b63b-73c5fc6e7bc6	Error:	Not allowed by cors
+20230131	13:53:12	62ffe3a0-9ae2-4e0e-8a36-fb086b58342f	Error:	Not allowed by cors
+20230131	13:53:13	741d6875-c258-49e6-9dd0-d518e2e90d92	Error:	Not allowed by cors
+20230131	13:53:15	1fd7977b-5248-4ea0-a50c-f862db8e7576	Error:	Not allowed by cors
+20230131	14:00:51	c96a3168-f029-4349-aa4a-5dd6c937fc4b	Error:	Not allowed by cors
+20230131	14:00:55	54c58b88-9972-46ab-970d-5df20a3576b2	Error:	Not allowed by cors
+20230131	14:03:55	6605168c-4dff-49d9-a75f-94bce31951bd	Error:	Not allowed by cors
+20230131	14:04:00	01d20fa1-921f-4aaf-ae3f-27737eff3bd8	Error:	Not allowed by cors
+20230131	14:04:02	520df962-4974-4297-b0a2-a2b3df7c22fd	Error:	Not allowed by cors
+20230131	14:06:23	e52fe3d6-58c3-4192-b91f-3610f07feace	Error:	Not allowed by cors
+20230131	14:14:47	7c7ff038-a16b-470f-81da-410a11173bf0	Error:	Not allowed by cors
+20230131	14:14:50	9f8a8341-94f4-470d-8a40-dc23cf37d7e8	Error:	Not allowed by cors
+20230131	14:15:36	c252fd52-3e76-47ba-a285-ca8cb12569b5	Error:	Not allowed by cors
+20230131	14:16:00	d475bfce-367f-4d68-9a96-1dfa09193980	Error:	Not allowed by cors
+20230131	20:24:30	8134d8ab-c5de-47b0-9bc0-030496202247	Error:	Not allowed by cors
+20230131	20:27:18	bddfacab-94f3-4d61-9c2f-d6ead1b7db5a	Error:	Not allowed by cors
+20230131	20:28:13	05103322-989d-4ff9-ae76-b44ef846c2a3	Error:	Not allowed by cors
+20230131	20:30:48	d1ba8035-f394-4b2e-b1cc-80ada7c4e329	Error:	Not allowed by cors

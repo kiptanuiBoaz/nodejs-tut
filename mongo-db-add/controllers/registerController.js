@@ -3,6 +3,7 @@ const User = require("../model/Users");// user schema
 
 
 const handleNewUser = async (req,res) =>{
+    console.log("pinged..");
     //destructure body params
     const {user, pwd} = req.body;
 
@@ -29,7 +30,7 @@ const handleNewUser = async (req,res) =>{
 
     }catch(err){
         console.error(err);
-        res.status(500).json({"message": err.message});
+        return res.status(500).json({"message": err.message});
     }
 
 }

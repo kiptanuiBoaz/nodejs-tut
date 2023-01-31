@@ -21,7 +21,7 @@ const handleLogin = async (req,res) => {
 
     if(match){
         //acces the roles of the fouend user
-        const roles = Object.values(foundUser.roles)
+        const roles = Object.values(foundUser.roles).filter(Boolean);
         //create access token
         const accessToken = jwt.sign(
             { "UserInfo":{
@@ -76,7 +76,7 @@ const handleLogin = async (req,res) => {
         return  res
             .cookie("jwt", newRefreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
             .status(200)
-            .json({"message":`User ${user} is logged in!`, accessToken})
+            .json({"message":`User ${user} is logged in!`,roles,accessToken})
         ;
     }else{
         return res.status(401).json({"message":"Password is incorrect"});
