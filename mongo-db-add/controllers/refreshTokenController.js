@@ -2,7 +2,7 @@ const User = require("../model/Users");// user schema
 const jwt = require("jsonwebtoken");
 
 const handleRefreshToken = async (req, res) => {
-    //destructure cookies
+    //tap into cookies
     const cookies = req.cookies;
 
     //check for cookies and jwt property
@@ -29,7 +29,7 @@ const handleRefreshToken = async (req, res) => {
                 //empty the refreshTokens array
                 hackedUser.refreshToken = [];
                 const result = hackedUser.save();
-                console.log(result)
+                
 
             }
 
@@ -64,7 +64,7 @@ const handleRefreshToken = async (req, res) => {
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: "30s" }
+                { expiresIn: "15m" }
             );
 
             //create NewRefresh token
@@ -75,14 +75,14 @@ const handleRefreshToken = async (req, res) => {
             )
 
             //saving refresh token with found user
-            foundUser.refreshToken = [...newRefreshTokenArray, ...newRefreshToken];
+            foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
             const result = await foundUser.save();
-            console.log(result);
+           
 
             return res
                 .cookie("jwt", newRefreshToken, { httpOnly: true, sameSite: "None", maxAge: 24 * 60 * 60 * 1000 }) //secureSite: true
                 .status(200)
-                .json({ "message": `User ${foundUser} is logged in!`, accessToken, roles })
+                .json({ "message": `User ${foundUser.username} is logged in!`, accessToken, roles })
             ;
         }
     )
