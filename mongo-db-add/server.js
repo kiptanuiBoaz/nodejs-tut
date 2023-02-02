@@ -20,7 +20,6 @@ connectDB();
 app.use(logger);
 
 //handle the credentials check before cors
-//fetch cookies requiement
 app.use(credentials); 
 
 //domains allowed to ping the server

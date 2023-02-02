@@ -43,3 +43,7 @@
 20230131	20:27:18	bddfacab-94f3-4d61-9c2f-d6ead1b7db5a	Error:	Not allowed by cors
 20230131	20:28:13	05103322-989d-4ff9-ae76-b44ef846c2a3	Error:	Not allowed by cors
 20230131	20:30:48	d1ba8035-f394-4b2e-b1cc-80ada7c4e329	Error:	Not allowed by cors
+20230201	10:49:26	2d99ceae-1c8b-4f61-a299-2fa9ec3c2247	Error:	Not allowed by cors
+20230201	10:49:31	2ac5c682-8c1e-4fd4-a2d1-96fe12625aab	Error:	Not allowed by cors
+20230201	10:50:06	ab992c47-ab12-469c-9305-79ae78c930ad	Error:	Not allowed by cors
+20230201	10:50:08	3cc6fead-0695-4736-99ef-89dc3e0cbde9	Error:	Not allowed by cors
