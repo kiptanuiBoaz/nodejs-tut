@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const handleLogin = async (req,res) => {
     const cookies = req.cookies;
+    console.log({cookies})
     
     //destructure body params
     const {user, pwd} = req.body;
@@ -66,13 +67,13 @@ const handleLogin = async (req,res) => {
                 newRefreshTokenArray = [];
             }
 
-            res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+            res.clearCookie('jwt', { httpOnly: true, sameSite: 'None',  }); //secure: true
         }
         
         //saving refresh token with found user
         foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
         const result = await foundUser.save();
-      
+      console.log(newRefreshToken)
         return  res
             .cookie("jwt", newRefreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
             .status(200)

@@ -19,6 +19,7 @@ connectDB();
 //custom middlewareLogger
 app.use(logger);
 
+
 //handle the credentials check before cors
 app.use(credentials); 
 

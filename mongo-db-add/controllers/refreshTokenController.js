@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const handleRefreshToken = async (req, res) => {
     //tap into cookies
     const cookies = req.cookies;
+    console.log({cookies});
 
     //check for cookies and jwt property
     if (!cookies?.jwt) return res.status(401).json({ "message": "cookie not found" });
@@ -50,7 +51,8 @@ const handleRefreshToken = async (req, res) => {
                 const result = await foundUser.save();
             }
             //id recieved name is !== name in DB
-            if (err || decoded.username !== foundUser.username) return res.status(403).json({ "message": `${err.message}` });
+            if (err || decoded.username !== foundUser.username) 
+             return res.status(403).json({ "message": `${err.message}` });
 
             //refresh Token still valid
             //roles of user from DB
