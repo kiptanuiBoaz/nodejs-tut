@@ -3,8 +3,9 @@ const jwt = require("jsonwebtoken");
 
 const handleRefreshToken = async (req, res) => {
     //tap into cookies
-    const cookies = req.cookies;
-    console.log(cookies);
+    const cookies = req?.cookies;
+
+    // console.log(req.headers);
 
     //check for cookies and jwt property
     if (!cookies?.jwt) return res.status(401).json({ "message": "cookie not found" });

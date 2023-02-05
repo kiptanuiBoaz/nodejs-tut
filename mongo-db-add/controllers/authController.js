@@ -50,7 +50,6 @@ const handleLogin = async (req,res) => {
         ;
 
         if (cookies?.jwt) {
-
             /* 
             Scenario  
                 1) User logs in but never uses RT and does not logout 
@@ -80,7 +79,7 @@ const handleLogin = async (req,res) => {
             .json({"message":`User ${user} is logged in!`,roles,accessToken})
         ;
     }else{
-        return res.status(401).json({"message":"Password is incorrect"});
+        return res.status(401).json({"message":"Password is incorrect"}, result);
     }
 
 }
