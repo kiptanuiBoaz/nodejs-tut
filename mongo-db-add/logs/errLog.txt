@@ -52,3 +52,4 @@
 20230205	20:18:16	e1c2a488-2fee-4f29-9fdc-498261d29ca1	ReferenceError:	AllowCredentials is not defined
 20230205	20:18:22	d67d7696-1c29-477e-91fa-fbbffa28e1f0	ReferenceError:	AllowCredentials is not defined
 20230205	20:18:22	8289839c-82a1-468a-954f-4f9db03f6df2	ReferenceError:	AllowCredentials is not defined
+20230206	14:50:59	1c755c11-d063-4c90-b284-47e1a60af48c	Error:	Not allowed by cors

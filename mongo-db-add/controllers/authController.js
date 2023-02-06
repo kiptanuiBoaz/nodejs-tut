@@ -10,7 +10,7 @@ const handleLogin = async (req,res) => {
     const {user, pwd} = req.body;
 
     //handle bad request
-    if(!pwd || !user) res.status(400).json({"message":"Username and password are required"});
+    if(!pwd || !user) return res.status(400).json({"message":"Username and password are required"});
 
     //query the presensce of user
     const foundUser = await User.findOne({username: user}).exec(); //exec is necessary bcoz its a mongoose method used with await without a callback
@@ -79,7 +79,7 @@ const handleLogin = async (req,res) => {
             .json({"message":`User ${user} is logged in!`,roles,accessToken})
         ;
     }else{
-        return res.status(401).json({"message":"Password is incorrect"}, result);
+        return res.status(401).json({"message":"Password is incorrect"});
     }
 
 }
