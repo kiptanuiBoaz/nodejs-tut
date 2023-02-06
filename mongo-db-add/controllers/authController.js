@@ -31,7 +31,7 @@ const handleLogin = async (req,res) => {
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            {expiresIn: "20m"}
+            {expiresIn: "10s"}
         )
 
         //create Refresh token
@@ -72,7 +72,7 @@ const handleLogin = async (req,res) => {
         //saving refresh token with found user
         foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
         const result = await foundUser.save();
-      console.log(newRefreshToken)
+      console.log({newRefreshToken})
         return  res
             .cookie("jwt", newRefreshToken, {httpOnly:true, sameSite:"None", maxAge: 24 * 60 * 60 * 1000}) //secureSite: true
             .status(200)
