@@ -4,6 +4,7 @@ const handleLogout= async (req,res) => {
     //on client side alsa delete the access token
     //destructure cookies
     const cookies = req.cookies;
+    // console.log(cookies)
 
     //check for cookies and jwt property
     if(!cookies?.jwt) return res.status(204).json({"message":"The cookie not found"});
